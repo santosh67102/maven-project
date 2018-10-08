@@ -6,8 +6,8 @@ pipeline {
 	}
 
     parameters {
-         string(name: 'tomcat_dev', defaultValue: 'ec2-18-221-241-151.us-east-2.compute.amazonaws.com', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: 'ec2-18-221-39-42.us-east-2.compute.amazonaws.com', description: 'Production Server')
+         string(name: 'tomcat_dev', defaultValue: 'ec2-18-221-241-151', description: 'Staging Server')
+         string(name: 'tomcat_prod', defaultValue: 'ec2-18-221-39-42', description: 'Production Server')
     }
 
     triggers {
