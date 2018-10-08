@@ -6,8 +6,8 @@ pipeline {
 	}
 
     parameters {
-         string(name: 'tomcat_dev', defaultValue: '172-31-30-70', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '172-31-31-135', description: 'Production Server')
+         string(name: 'tomcat_dev', defaultValue: '35.166.210.154', description: 'Staging Server')
+         string(name: 'tomcat_prod', defaultValue: '34.209.233.6', description: 'Production Server')
     }
 
     triggers {
@@ -31,13 +31,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i /downloads/tomcat.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        sh "scp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /downloads/tomcat.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        sh "scp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
