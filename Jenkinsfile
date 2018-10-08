@@ -31,13 +31,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "cp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war localhost:8090/webapp"
+                        sh "cp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "cp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war localhost:9090/webapp"
+                        sh "cp -i /Users/santoshgautam/Downloads/tomcat.pem /Users/santoshgautam/maven-project/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
